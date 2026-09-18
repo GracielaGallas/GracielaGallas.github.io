@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <g id="gg" fill="none" stroke-width="36" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M215 170Q190 150 160 150Q100 150 100 246Q100 342 160 342Q210 342 215 300V250H165"/>
+      <path d="M415 170Q390 150 360 150Q300 150 300 246Q300 342 360 342Q410 342 415 300V250H365"/>
+    </g>
+  </defs>
+  <rect x="48" y="48" width="440" height="440" rx="72" fill="#241f2e"/>
+  <rect x="24" y="24" width="440" height="440" rx="72" fill="#2fb8a8" stroke="#241f2e" stroke-width="24"/>
+  <use href="#gg" transform="translate(-6 0)" x="14" y="14" stroke="#ff6b52"/>
+  <use href="#gg" transform="translate(-6 0)" stroke="#241f2e"/>
+</svg>

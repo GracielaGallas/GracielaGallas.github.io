@@ -1,0 +1,237 @@
+:root{
+  --bg:#fdf1e6;
+  --ink:#241f2e;
+  --card:#ffffff;
+  --border:#241f2e;
+  --shadow:6px 6px 0 var(--border);
+  --coral:#ff6b52;
+  --teal:#2fb8a8;
+  --yellow:#ffcb3d;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#181423;
+    --ink:#f5efe6;
+    --card:#241d38;
+    --border:#f5efe6;
+    --shadow:6px 6px 0 rgba(0,0,0,.5);
+  }
+}
+:root[data-theme="light"]{
+  --bg:#fdf1e6;
+  --ink:#241f2e;
+  --card:#ffffff;
+  --border:#241f2e;
+  --shadow:6px 6px 0 var(--border);
+}
+:root[data-theme="dark"]{
+  --bg:#181423;
+  --ink:#f5efe6;
+  --card:#241d38;
+  --border:#f5efe6;
+  --shadow:6px 6px 0 rgba(0,0,0,.5);
+}
+
+*{box-sizing:border-box; margin:0}
+html,body{height:100%}
+body{
+  min-height:100dvh;
+  background:
+    radial-gradient(circle at 15% 15%, rgba(47,184,168,.18), transparent 40%),
+    radial-gradient(circle at 85% 15%, rgba(255,107,82,.18), transparent 45%),
+    radial-gradient(circle at 50% 95%, rgba(255,203,61,.15), transparent 50%),
+    var(--bg);
+  color:var(--ink);
+  font-family:"Rubik", system-ui, -apple-system, sans-serif;
+  overflow-x:hidden;
+  position:relative;
+}
+
+#theme-toggle{
+  position:fixed;
+  top:1rem;
+  right:1rem;
+  z-index:10;
+  width:2.6rem;
+  height:2.6rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.2rem;
+  background:var(--card);
+  border:3px solid var(--border);
+  border-radius:999px;
+  box-shadow:var(--shadow);
+  cursor:pointer;
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+#theme-toggle:hover{transform:translate(-2px,-2px); box-shadow:8px 8px 0 var(--border)}
+#theme-toggle:active{transform:translate(2px,2px); box-shadow:2px 2px 0 var(--border)}
+
+main{position:relative; z-index:1; min-height:100vh; display:grid; place-items:center; padding:8vh 7vw}
+.wrap{max-width:38rem; text-align:center}
+
+.avatar-container{
+  position:relative;
+  width:144px;
+  height:144px;
+  margin:0 auto 1.5rem;
+  cursor:pointer;
+  border-radius:50%;
+  background:var(--teal);
+  border:3px solid var(--border);
+  box-shadow:var(--shadow);
+  user-select:none;
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.avatar-container:hover{transform:translateY(-6px); box-shadow:8px 10px 0 var(--border)}
+@media (min-width:720px){.avatar-container{width:168px; height:168px}}
+.avatar{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:opacity .5s ease;
+}
+.avatar-primary{opacity:1; z-index:2}
+.avatar-secondary{opacity:0; z-index:1; font-size:4.2rem; background:var(--yellow)}
+.avatar-container.switched .avatar-primary{opacity:0}
+.avatar-container.switched .avatar-secondary{opacity:1}
+
+.eyebrow{
+  font-family:"Space Mono", monospace;
+  font-size:.7rem;
+  letter-spacing:.03em;
+  color:var(--coral);
+  margin:0 0 .8rem;
+}
+.title{
+  font-size:clamp(2.5rem, 8vw, 4.5rem);
+  line-height:1.05;
+  font-weight:700;
+  margin:0 0 .6rem;
+}
+.title .wobble{
+  display:inline-block;
+  background:linear-gradient(90deg, var(--teal), var(--coral));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  animation:wobble 3.5s ease-in-out infinite;
+}
+@keyframes wobble{
+  0%,100%{transform:rotate(-1deg) translateY(0)}
+  50%{transform:rotate(1deg) translateY(-3px)}
+}
+.role{
+  display:inline-block;
+  margin:0 0 1rem;
+  padding:.3rem .9rem;
+  background:var(--yellow);
+  color:#241f2e;
+  border:3px solid var(--border);
+  border-radius:999px;
+  box-shadow:4px 4px 0 var(--border);
+  font-weight:600;
+  font-size:.95rem;
+}
+.subtle{
+  display:block;
+  width:fit-content;
+  max-width:100%;
+  font-size:.95rem;
+  opacity:.75;
+  margin:0 auto 1.8rem;
+  cursor:pointer;
+  border-bottom:1px dotted currentColor;
+  transition:opacity .15s ease;
+}
+.subtle:hover{opacity:1}
+
+.actions{display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; margin-bottom:1.8rem}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:.6rem;
+  padding:.8rem 1.3rem;
+  background:var(--card);
+  color:var(--ink);
+  border:3px solid var(--border);
+  border-radius:999px;
+  box-shadow:var(--shadow);
+  font-family:inherit;
+  font-weight:600;
+  font-size:.95rem;
+  text-decoration:none;
+  cursor:pointer;
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.btn:hover{transform:translateY(-6px); box-shadow:8px 10px 0 var(--border)}
+.btn:active{transform:translate(2px,2px); box-shadow:2px 2px 0 var(--border)}
+.btn svg{width:1.25rem; height:1.25rem; flex:0 0 1.25rem}
+
+footer{font-size:.85rem; opacity:.7}
+
+@media (prefers-reduced-motion: reduce){
+  .title .wobble, body.glitch-mode h1{animation:none !important}
+}
+
+/* glitch easter egg — hold the avatar for 10s */
+body.glitch-mode{background:#000}
+body.glitch-mode main{padding:0}
+body.glitch-mode .wrap{max-width:none}
+body.glitch-mode .avatar-container, body.glitch-mode .eyebrow, body.glitch-mode .role,
+body.glitch-mode .subtle, body.glitch-mode footer{display:none}
+body.glitch-mode h1{
+  font-family:"Bebas Neue", "Impact", "Arial Black", sans-serif;
+  font-size:14rem;
+  color:#ff0000;
+  text-transform:uppercase;
+  letter-spacing:.02em;
+  text-shadow:0 0 10px #ff0000, 0 0 20px #ff0000;
+  animation:shake .15s infinite;
+  margin:0;
+}
+@keyframes shake{
+  0%{transform:translate(.5px,.5px)}
+  10%{transform:translate(-.5px,-.5px)}
+  20%{transform:translate(-.5px,0)}
+  30%{transform:translate(.5px,.5px)}
+  40%{transform:translate(0,-.5px)}
+  50%{transform:translate(-.5px,.5px)}
+  60%{transform:translate(.5px,0)}
+  70%{transform:translate(0,.5px)}
+  80%{transform:translate(-.5px,-.5px)}
+  90%{transform:translate(.5px,.5px)}
+  100%{transform:translate(0,0)}
+}
+body.glitch-mode .actions{max-width:600px; margin:1rem auto 0; gap:1rem}
+body.glitch-mode .btn{
+  font-family:"Bebas Neue", "Impact", "Arial Black", sans-serif;
+  font-size:1.5rem;
+  color:#ff0000;
+  text-transform:uppercase;
+  padding:1rem 2rem;
+  border:2px solid #ff0000;
+  border-radius:0;
+  text-shadow:0 0 10px #ff0000;
+  box-shadow:0 0 10px #ff0000;
+  background:transparent;
+  flex:1;
+  min-width:150px;
+}
+body.glitch-mode .btn:hover{background:#ff0000; color:#000; text-shadow:none; box-shadow:0 0 20px #ff0000; transform:none}
+body.glitch-mode .btn svg{display:none}
+
+@media (max-width:768px){
+  body.glitch-mode h1{font-size:6rem}
+  body.glitch-mode .actions{flex-direction:column}
+}
+@media (max-width:480px){
+  body.glitch-mode h1{font-size:4rem}
+}
